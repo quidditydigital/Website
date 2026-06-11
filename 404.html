@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Not Found — Quiddity Digital</title>
+  <meta name="description" content="The page you're looking for doesn't exist."/>
+    <meta name="robots" content="noindex"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/styles.css"/>
+  <style>
+    .err-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background blobs */
+    .err-page::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(11,196,220,.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .err-page::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(225,173,1,.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .err-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+    }
+
+    .err-logo {
+      font-family: var(--ff-h);
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--tx);
+      letter-spacing: -.01em;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 48px;
+    }
+    .err-logo em { font-style: normal; color: var(--blue-d) }
+
+    .err-code {
+      font-family: var(--ff-h);
+      font-size: clamp(6rem, 18vw, 10rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -.04em;
+      background: linear-gradient(135deg, var(--blue-d), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .err-title {
+      font-family: var(--ff-h);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--tx);
+      margin-bottom: 16px;
+      letter-spacing: -.01em;
+    }
+
+    .err-desc {
+      font-family: var(--ff-b);
+      font-size: 1rem;
+      color: var(--tx-sub);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .err-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .err-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .err-link {
+      font-family: var(--ff-h);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--tx-lt);
+      padding: 6px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      transition: var(--t);
+      text-decoration: none;
+    }
+    .err-link:hover { color: var(--blue-d); border-color: var(--blue); background: var(--blue-l) }
+
+    @media (max-width: 480px) {
+      .err-actions { flex-direction: column; align-items: center }
+      .err-actions .btn { width: 100%; justify-content: center }
+    }
+  </style>
+
+  <!-- GA4 — enable by setting CONFIG.FEATURES.ANALYTICS_ENABLED = true and CONFIG.GA4_ID in config.js -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof CONFIG === 'undefined' || !CONFIG.FEATURES.ANALYTICS_ENABLED || !CONFIG.GA4_ID) return;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + CONFIG.GA4_ID;
+      s.async = true; document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date()); gtag('config', CONFIG.GA4_ID, { anonymize_ip: true });
+    });
+  </script>
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon"       href="/assets/favicon.ico"/>
+  <link rel="icon" type="image/svg+xml"      href="/assets/favicon.svg"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180"    href="/assets/apple-touch-icon.png"/>
+  <link rel="manifest"                            href="/site.webmanifest"/>
+  <meta name="theme-color" content="#0BC4DC"/>
+  <meta name="msapplication-TileColor" content="#0f1924"/>
+</head>
+<body>
+
+<div class="err-page">
+  <div class="err-inner">
+
+    <a href="/" class="err-logo">Quiddity<em>Digital</em></a>
+
+    <div class="err-code">404</div>
+
+    <h1 class="err-title">Page not found</h1>
+
+    <p class="err-desc">
+      The page you're looking for has either moved, been removed, or never existed.
+      Let's get you back on track.
+    </p>
+
+    <div class="err-actions">
+      <a href="/" class="btn btn-cta">Back to Home <span class="btn-arr">→</span></a>
+      <a href="/all-posts.html" class="btn btn-outline">Browse Insights</a>
+    </div>
+
+    <div class="err-links">
+      <a href="/#services" class="err-link">Services</a>
+      <a href="/#about"    class="err-link">About</a>
+      <a href="/#booking"  class="err-link">Book a Session</a>
+      <a href="/#contact"  class="err-link">Contact</a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

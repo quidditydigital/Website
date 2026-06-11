@@ -1,0 +1,21 @@
+{
+  "name": "Quiddity Digital",
+  "short_name": "Quiddity",
+  "description": "Mumbai's performance-first digital marketing agency.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0f1924",
+  "theme_color": "#0BC4DC",
+  "icons": [
+    {
+      "src": "/assets/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

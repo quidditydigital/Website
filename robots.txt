@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Canonical domain: https://quidditydigital.com
+# All pages include canonical meta tags pointing to this domain.
+# The Vercel preview (quiddity-website.vercel.app) should not be indexed.
+
+Sitemap: https://quidditydigital.com/sitemap.xml
