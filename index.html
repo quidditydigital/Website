@@ -26,70 +26,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="stylesheet" href="styles.css"/>
-  <link rel="stylesheet" href="hero-redesign.css"/>
+  <link rel="stylesheet" href="premium.css"/>
+  <!-- Preload custom fonts for LCP performance -->
+  <link rel="preload" href="public/fonts/TT%20Drugs%20Trial%20Black.otf" as="font" type="font/otf" crossorigin/>
+  <link rel="preload" href="public/fonts/ArchiveBold.ttf" as="font" type="font/ttf" crossorigin/>
   <style>
-    /* ── Fix hero eyebrow: remove pill background, plain label style ── */
-    .hero-eyebrow {
-      background: none !important;
-      border: none !important;
-      padding: 0 !important;
-      border-radius: 0 !important;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--tx-lt, #6b7280);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    /* ── New about section: full-width copy layout ── */
-    .about-copy-full {
-      max-width: 780px;
-      margin: 0 auto;
-    }
-    .about-copy-full .section-h2 {
-      margin-bottom: 24px;
-    }
-    .about-copy-full .about-quiddity-badge {
-      margin-bottom: 24px;
-    }
-    .about-copy-full .body-p {
-      margin-bottom: 16px;
-    }
+    /* ── About section full-width layout (kept from original) ── */
+    .about-copy-full { max-width: 780px; margin: 0 auto }
+    .about-copy-full .section-h2 { margin-bottom: 24px }
+    .about-copy-full .about-quiddity-badge { margin-bottom: 24px }
+    .about-copy-full .body-p { margin-bottom: 16px }
     .about-stats-row {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin: 36px 0 32px;
-      padding: 28px 32px;
+      display: flex; gap: 40px; flex-wrap: wrap;
+      margin: 36px 0 32px; padding: 28px 32px;
       background: var(--surface, #f8fafc);
-      border-radius: 16px;
+      border-radius: 4px;
     }
-    .about-stat {
-      flex: 1;
-      min-width: 100px;
-    }
-    .as-n {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--blue, #0BC4DC);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .as-l {
-      font-size: .78rem;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      color: var(--tx-lt, #6b7280);
-      font-weight: 600;
-    }
-    @media (max-width: 600px) {
-      .about-stats-row { gap: 24px; padding: 20px; }
-      .as-n { font-size: 1.6rem; }
-    }
+    .about-stat { flex: 1; min-width: 100px }
+    .as-n { font-size: 2rem; font-weight: 800; color: var(--blue, #0BC4DC); line-height: 1; margin-bottom: 4px }
+    .as-l { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--tx-lt, #6b7280); font-weight: 600 }
+    @media (max-width: 600px) { .about-stats-row { gap: 24px; padding: 20px } .as-n { font-size: 1.6rem } }
   </style>
   <!-- LocalBusiness JSON-LD structured data -->
   <script type="application/ld+json">
@@ -190,67 +146,46 @@
 
 
 <!-- ══════════════════════════════════════════
-     HERO  #home  — Deep Ocean Editorial
+     HERO  #home
      ══════════════════════════════════════════ -->
 <section id="home">
 
-  <!-- Atmospheric layers (visual only, aria-hidden) -->
-  <div class="hero-ocean-canvas" aria-hidden="true">
-    <div class="bio-orb bio-orb--a"></div>
-    <div class="bio-orb bio-orb--b"></div>
-    <div class="bio-orb bio-orb--c"></div>
-  </div>
-  <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+  <!-- Atmospheric grid background — drawn by JS, zero network cost -->
+  <div class="hero-canvas" id="heroCanvas" aria-hidden="true"></div>
 
   <div class="container">
     <div class="hero-inner">
-      <div class="hero-copy hero-editorial">
 
-        <!-- Discipline strip (replaces eyebrow pill) -->
+      <!-- LEFT: Copy -->
+      <div class="hero-copy">
         <div class="hero-eyebrow">
-          <div class="discipline-strip">
-            <span class="discipline-item active">SEO</span>
-            <span class="discipline-sep"></span>
-            <span class="discipline-item">Paid Media</span>
-            <span class="discipline-sep"></span>
-            <span class="discipline-item">Content Strategy</span>
-            <span class="discipline-sep"></span>
-            <span class="discipline-item">Retention Systems</span>
-            <span class="discipline-sep"></span>
-            <span class="discipline-item">Analytics</span>
-          </div>
+          <span class="eyebrow-dot"></span>
+          Scaling Brands Across Every Market
         </div>
 
-        <!-- Headline — original text, new typographic treatment -->
         <h1 class="hero-h1">
-          <span class="h1-line">The <em>Hidden</em> Element</span>
-          <span class="h1-line">Behind Your</span>
-          <span class="h1-line h1-gold">Growth.</span>
+          The Hidden Element<br>
+          Behind Your<br>
+          <span class="c-cta">Growth.</span>
         </h1>
 
-        <span class="hero-rule"></span>
-
-        <!-- Original subtext preserved verbatim -->
         <p class="hero-sub">
           Driven by creativity &amp; innovation we are a digital brand that aims at being customer friendly rather than corporate heavy for bridging the gap between a brand and their consumer. Smart strategy, Story telling, modern marketing and meaningful results. "The only constant you'll need for your growing brand as a partner to tell the tales of your presence • QuiddityDigital"
         </p>
 
-        <!-- Original CTAs preserved -->
         <div class="hero-actions">
-          <a href="#booking" class="btn-ocean-primary">Get My Free Strategy Session <span class="btn-arr">→</span></a>
-          <a href="#services" class="btn-ocean-ghost">See What We Do</a>
+          <a href="#booking" class="btn btn-cta">Get My Free Strategy Session <span class="btn-arr">→</span></a>
+          <a href="#services" class="btn btn-outline">See What We Do</a>
         </div>
 
-        <!-- Original trust bar text preserved, star icons removed for editorial cleanliness -->
         <div class="hero-trust-bar">
-          <span class="trust-item">No retainer lock-in</span>
-          <span class="trust-sep">&nbsp;</span>
-          <span class="trust-item">Free strategy session</span>
-          <span class="trust-sep">&nbsp;</span>
-          <span class="trust-item">Visible results within 90 days</span>
+          <span class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--green)" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> No retainer lock-in</span>
+          <span class="trust-sep">·</span>
+          <span class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--green)" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Free strategy session</span>
+          <span class="trust-sep">·</span>
+          <span class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--green)" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Visible results within 90 days</span>
         </div>
 
-        <!-- Stats row — preserved but styled for dark theme -->
         <div class="hero-stats">
           <div class="hstat">
             <span class="hstat-n">3<sup>×</sup></span>
@@ -269,22 +204,21 @@
             <span class="hstat-l">Retention Rate</span>
           </div>
         </div>
-
       </div>
-      <!-- Hero image column intentionally removed for asymmetric editorial layout -->
+
     </div>
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════════
-     PHILOSOPHY BAND (new — between hero & about)
+     PHILOSOPHY BAND
      ══════════════════════════════════════════ -->
 <div class="philosophy-band reveal">
   <div class="philosophy-inner">
     <div>
-      <p class="philosophy-label">Our Manifesto</p>
-      <div class="philosophy-marker"></div>
+      <p class="philosophy-label">Principle</p>
+      <div class="philosophy-accent"></div>
     </div>
     <blockquote>
       <p class="philosophy-quote">
@@ -706,38 +640,162 @@
 <script src="notion.js"></script>
 <script src="script.js" defer></script>
 
-<!-- ── HERO OCEAN ATMOSPHERE ── -->
+<!-- ── PREMIUM ATMOSPHERE SCRIPT ── -->
 <script>
-(function(){
-  /* Floating bioluminescent particles */
-  var container = document.getElementById('heroParticles');
-  if(container){
-    for(var i=0;i<28;i++){
-      var el=document.createElement('div');
-      el.className='particle';
-      var size=(Math.random()*2+1).toFixed(1);
-      el.style.cssText=[
-        'width:'+size+'px',
-        'height:'+size+'px',
-        'left:'+(Math.random()*100).toFixed(1)+'%',
-        'bottom:'+(Math.random()*45).toFixed(1)+'%',
-        'animation-duration:'+(Math.random()*14+10).toFixed(1)+'s',
-        'animation-delay:-'+(Math.random()*18).toFixed(1)+'s'
-      ].join(';');
-      container.appendChild(el);
+(function () {
+  'use strict';
+
+  /* ─────────────────────────────────────────────
+     HERO CANVAS — architectural grid background
+     Pure SVG, no images, no network requests.
+     Strategy: blueprint / planning grid feel,
+     extremely low opacity, discovered not obvious.
+  ───────────────────────────────────────────── */
+  function buildHeroCanvas() {
+    var wrap = document.getElementById('heroCanvas');
+    if (!wrap) return;
+
+    var W = wrap.offsetWidth  || window.innerWidth;
+    var H = wrap.offsetHeight || window.innerHeight;
+
+    var ns = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+    svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;';
+
+    /* colour tokens — match the CSS vars */
+    var BLUE   = '#0BC4DC';
+    var GOLD   = '#E1AD01';
+    var DARK   = '#111827';
+
+    /* ── 1. Fine dot grid (very faint) ── */
+    var dotPattern = document.createElementNS(ns, 'pattern');
+    dotPattern.setAttribute('id', 'qDots');
+    dotPattern.setAttribute('width', '32');
+    dotPattern.setAttribute('height', '32');
+    dotPattern.setAttribute('patternUnits', 'userSpaceOnUse');
+    var dot = document.createElementNS(ns, 'circle');
+    dot.setAttribute('cx', '1'); dot.setAttribute('cy', '1');
+    dot.setAttribute('r', '0.8'); dot.setAttribute('fill', DARK);
+    dot.setAttribute('opacity', '0.09');
+    dotPattern.appendChild(dot);
+    var defs = document.createElementNS(ns, 'defs');
+    defs.appendChild(dotPattern);
+    svg.appendChild(defs);
+
+    var dotBg = document.createElementNS(ns, 'rect');
+    dotBg.setAttribute('width', '100%'); dotBg.setAttribute('height', '100%');
+    dotBg.setAttribute('fill', 'url(#qDots)');
+    svg.appendChild(dotBg);
+
+    /* ── 2. Growth curve lines — three asymptotic curves ── */
+    var curves = [
+      { sx: W * 0.02, sy: H * 0.92, cp1x: W * 0.2,  cp1y: H * 0.88, cp2x: W * 0.45, cp2y: H * 0.4,  ex: W * 0.82, ey: H * 0.06, color: BLUE,  op: 0.06, w: 1.5 },
+      { sx: W * 0.05, sy: H * 0.96, cp1x: W * 0.25, cp1y: H * 0.94, cp2x: W * 0.55, cp2y: H * 0.52, ex: W * 0.95, ey: H * 0.12, color: BLUE,  op: 0.04, w: 1   },
+      { sx: W * 0.0,  sy: H * 0.85, cp1x: W * 0.15, cp1y: H * 0.78, cp2x: W * 0.38, cp2y: H * 0.25, ex: W * 0.65, ey: H * 0.02, color: GOLD,  op: 0.05, w: 1   }
+    ];
+
+    curves.forEach(function (c) {
+      var path = document.createElementNS(ns, 'path');
+      var d = 'M ' + c.sx + ' ' + c.sy
+            + ' C ' + c.cp1x + ' ' + c.cp1y
+            + ', '  + c.cp2x + ' ' + c.cp2y
+            + ', '  + c.ex   + ' ' + c.ey;
+      path.setAttribute('d', d);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', c.color);
+      path.setAttribute('stroke-width', c.w);
+      path.setAttribute('opacity', c.op);
+      path.setAttribute('stroke-linecap', 'round');
+      svg.appendChild(path);
+    });
+
+    /* ── 3. Sparse strategic axis lines ── */
+    var axisLines = [
+      { x1: W * 0.0,  y1: H * 0.96, x2: W * 0.96, y2: H * 0.96 }, /* baseline */
+      { x1: W * 0.05, y1: H * 0.0,  x2: W * 0.05, y2: H * 0.98 }  /* y-axis   */
+    ];
+    axisLines.forEach(function (l) {
+      var line = document.createElementNS(ns, 'line');
+      line.setAttribute('x1', l.x1); line.setAttribute('y1', l.y1);
+      line.setAttribute('x2', l.x2); line.setAttribute('y2', l.y2);
+      line.setAttribute('stroke', DARK);
+      line.setAttribute('stroke-width', '0.8');
+      line.setAttribute('opacity', '0.06');
+      svg.appendChild(line);
+    });
+
+    /* ── 4. Tick marks on baseline ── */
+    var ticks = 8;
+    for (var i = 1; i <= ticks; i++) {
+      var tx = W * 0.05 + (W * 0.91 / ticks) * i;
+      var tick = document.createElementNS(ns, 'line');
+      tick.setAttribute('x1', tx);   tick.setAttribute('y1', H * 0.96);
+      tick.setAttribute('x2', tx);   tick.setAttribute('y2', H * 0.96 + 6);
+      tick.setAttribute('stroke', DARK);
+      tick.setAttribute('stroke-width', '0.8');
+      tick.setAttribute('opacity', '0.06');
+      svg.appendChild(tick);
     }
+
+    /* ── 5. Single soft radial glow top-right ── */
+    var radialDef = document.createElementNS(ns, 'radialGradient');
+    radialDef.setAttribute('id', 'qGlow');
+    radialDef.setAttribute('cx', '75%'); radialDef.setAttribute('cy', '15%');
+    radialDef.setAttribute('r', '35%');
+    radialDef.setAttribute('gradientUnits', 'objectBoundingBox');
+    var s1 = document.createElementNS(ns, 'stop');
+    s1.setAttribute('offset', '0%');   s1.setAttribute('stop-color', BLUE);  s1.setAttribute('stop-opacity', '0.04');
+    var s2 = document.createElementNS(ns, 'stop');
+    s2.setAttribute('offset', '100%'); s2.setAttribute('stop-color', BLUE);  s2.setAttribute('stop-opacity', '0');
+    radialDef.appendChild(s1); radialDef.appendChild(s2);
+    defs.appendChild(radialDef);
+
+    var glow = document.createElementNS(ns, 'rect');
+    glow.setAttribute('width', '100%'); glow.setAttribute('height', '100%');
+    glow.setAttribute('fill', 'url(#qGlow)');
+    svg.appendChild(glow);
+
+    wrap.appendChild(svg);
   }
 
-  /* Discipline strip: softly cycle the active label */
-  var items=document.querySelectorAll('.discipline-item');
-  if(items.length){
-    var cur=0;
-    setInterval(function(){
-      items[cur].classList.remove('active');
-      cur=(cur+1)%items.length;
-      items[cur].classList.add('active');
-    },2400);
+  /* ─────────────────────────────────────────────
+     REVEAL OBSERVER — reuse existing .reveal
+     system from script.js but add philosophy-band
+  ───────────────────────────────────────────── */
+  function initReveal() {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    buildHeroCanvas();
+    initReveal();
+  });
+
+  /* Rebuild canvas on resize (debounced) */
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      var wrap = document.getElementById('heroCanvas');
+      if (wrap) { wrap.innerHTML = ''; buildHeroCanvas(); }
+    }, 200);
+  });
+
 })();
 </script>
 </body>
