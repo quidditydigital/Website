@@ -1721,3 +1721,95 @@ footer h5 {
 /* Back link */
 .ap-back { color: var(--tx-abyss) !important; font-family: var(--ff-sans) !important; }
 .ap-back:hover { color: var(--bio-primary) !important; }
+
+/* ================================================================
+   NAVBAR SVG WORDMARK — .navbar-logo / .navbar-logo-image
+   Replaces the plain text .nav-logo treatment.
+   Works on index.html, blog.html, all-posts.html.
+   ================================================================ */
+
+/* Wrapper: flex container, never stretches the navbar */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  /* Override any inherited text styles from .nav-logo */
+  font-size: 0;
+  line-height: 0;
+}
+
+/* The image itself */
+.navbar-logo-image {
+  display: block;
+
+  /* Fluid scaling: 130px mobile → 200px desktop, never taller than navbar */
+  width: clamp(130px, 14vw, 200px);
+  height: auto;
+  max-height: 36px;     /* keep within the 68px navbar; leaves breathing room */
+  object-fit: contain;
+  object-position: left center;
+
+  /* Crisp rendering on all displays */
+  image-rendering: auto;       /* SVG scales perfectly at any DPR */
+  -webkit-font-smoothing: antialiased;
+
+  /* Bioluminescent ambient glow — extremely subtle at rest */
+  filter: drop-shadow(0 0 4px rgba(0, 220, 255, 0.14));
+
+  /* Smooth transitions for hover */
+  transition:
+    transform 0.28s var(--ease-current, cubic-bezier(0.16, 1, 0.3, 1)),
+    filter   0.28s var(--ease-current, cubic-bezier(0.16, 1, 0.3, 1));
+
+  /* Prevent layout blowout */
+  flex-shrink: 0;
+  max-width: 200px;
+}
+
+/* Hover: micro-scale + stronger glow */
+.navbar-logo:hover .navbar-logo-image {
+  transform: scale(1.025);
+  filter: drop-shadow(0 0 9px rgba(0, 220, 255, 0.28))
+          drop-shadow(0 0 2px rgba(0, 220, 255, 0.12));
+}
+
+/* Active/tap feedback */
+.navbar-logo:active .navbar-logo-image {
+  transform: scale(0.98);
+  filter: drop-shadow(0 0 5px rgba(0, 220, 255, 0.18));
+  transition-duration: 0.1s;
+}
+
+/* ── Tablet (≤ 900px) ── */
+@media (max-width: 900px) {
+  .navbar-logo-image {
+    width: clamp(130px, 18vw, 178px);
+    max-height: 32px;
+  }
+}
+
+/* ── Mobile (≤ 600px) ── */
+@media (max-width: 600px) {
+  .navbar-logo-image {
+    width: clamp(120px, 36vw, 150px);
+    max-height: 28px;
+  }
+
+  /* Ensure hamburger button never overlaps logo */
+  .nav-wrap {
+    gap: 8px;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .navbar-logo-image {
+    transition: none !important;
+    filter: none !important;
+  }
+  .navbar-logo:hover .navbar-logo-image {
+    transform: none !important;
+    filter: drop-shadow(0 0 4px rgba(0, 220, 255, 0.14)) !important;
+  }
+}
