@@ -28,6 +28,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="hero-redesign.css"/>
+  <link rel="stylesheet" href="hidden-current.css"/>
   <!-- Breadcrumb JSON-LD -->
   <script type="application/ld+json">
   {
@@ -240,6 +242,27 @@
   <meta name="msapplication-TileColor" content="#0f1924"/>
 </head>
 <body>
+
+<!-- ══ GLOBAL CURRENT CANVAS ══════════════════════════════════ -->
+<div id="current-canvas" aria-hidden="true">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <path class="current-path current-path--a"
+      d="M-100 220 C 200 195, 500 255, 800 215 S 1200 170, 1600 220"
+      stroke="rgba(11,196,220,0.065)" stroke-width="1.2"/>
+    <path class="current-path current-path--b"
+      d="M-100 410 C 300 385, 600 445, 900 405 S 1300 365, 1700 410"
+      stroke="rgba(11,196,220,0.05)"/>
+    <path class="current-path current-path--c"
+      d="M-100 620 C 250 595, 550 648, 850 612 S 1250 565, 1650 618"
+      stroke="rgba(11,196,220,0.038)"/>
+    <circle cx="380" cy="190" r="1.0" fill="rgba(11,196,220,0.15)">
+      <animate attributeName="opacity" values=".07;.40;.07" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1100" cy="480" r="1.2" fill="rgba(11,196,220,0.12)">
+      <animate attributeName="opacity" values=".06;.32;.06" dur="12s" repeatCount="indefinite" begin="5s"/>
+    </circle>
+  </svg>
+</div>
 
 <!-- ══════════════════════════════════════════
      NAVBAR
