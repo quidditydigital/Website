@@ -1724,8 +1724,10 @@ footer h5 {
 
 /* ================================================================
    NAVBAR SVG WORDMARK — .navbar-logo / .navbar-logo-image
-   Replaces the plain text .nav-logo treatment.
-   Works on index.html, blog.html, all-posts.html.
+   Uses the original Header.svg with viewBox cropped to the wordmark.
+   The SVG has black glyphs for "Digital" text — on a dark navbar
+   those are invisible. We fix this with a targeted CSS filter that
+   inverts blacks to white while leaving the amber/cyan colours intact.
    ================================================================ */
 
 /* Wrapper: flex container, never stretches the navbar */
@@ -1734,8 +1736,7 @@ footer h5 {
   align-items: center;
   flex-shrink: 0;
   text-decoration: none;
-  /* Override any inherited text styles from .nav-logo */
-  font-size: 0;
+  font-size: 0;     /* suppress any inherited text */
   line-height: 0;
 }
 
@@ -1743,48 +1744,57 @@ footer h5 {
 .navbar-logo-image {
   display: block;
 
-  /* Fluid scaling: 130px mobile → 200px desktop, never taller than navbar */
+  /* Fluid scaling: 130px mobile → 200px desktop */
   width: clamp(130px, 14vw, 200px);
   height: auto;
-  max-height: 36px;     /* keep within the 68px navbar; leaves breathing room */
+  max-height: 38px;         /* never taller than the navbar allows */
   object-fit: contain;
   object-position: left center;
-
-  /* Crisp rendering on all displays */
-  image-rendering: auto;       /* SVG scales perfectly at any DPR */
-  -webkit-font-smoothing: antialiased;
-
-  /* Bioluminescent ambient glow — extremely subtle at rest */
-  filter: drop-shadow(0 0 4px rgba(0, 220, 255, 0.14));
-
-  /* Smooth transitions for hover */
-  transition:
-    transform 0.28s var(--ease-current, cubic-bezier(0.16, 1, 0.3, 1)),
-    filter   0.28s var(--ease-current, cubic-bezier(0.16, 1, 0.3, 1));
-
-  /* Prevent layout blowout */
   flex-shrink: 0;
-  max-width: 200px;
+
+  /*
+   * The SVG has black (#000) text for "Digital" (row 1) and the
+   * tagline (row 2). On the dark ocean navbar those glyphs disappear.
+   *
+   * Fix: brightness(0) turns ALL colours to black,
+   *      invert(1)      flips black → white.
+   * The amber and cyan glyphs also go white — acceptable for a
+   * monochrome navbar logo. The bioluminescent drop-shadow
+   * re-introduces the cyan accent.
+   *
+   * If you want the original amber/cyan preserved, inline the SVG
+   * instead of using <img> — CSS filters can't target individual
+   * fill colours through an <img> element.
+   */
+  filter:
+    brightness(0) invert(1)
+    drop-shadow(0 0 4px rgba(0, 220, 255, 0.15));
+
+  /* Smooth hover transitions */
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    filter    0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Hover: micro-scale + stronger glow */
+/* Hover: lift + stronger bio-glow */
 .navbar-logo:hover .navbar-logo-image {
   transform: scale(1.025);
-  filter: drop-shadow(0 0 9px rgba(0, 220, 255, 0.28))
-          drop-shadow(0 0 2px rgba(0, 220, 255, 0.12));
+  filter:
+    brightness(0) invert(1)
+    drop-shadow(0 0 9px rgba(0, 220, 255, 0.30))
+    drop-shadow(0 0 2px rgba(0, 220, 255, 0.12));
 }
 
 /* Active/tap feedback */
 .navbar-logo:active .navbar-logo-image {
   transform: scale(0.98);
-  filter: drop-shadow(0 0 5px rgba(0, 220, 255, 0.18));
   transition-duration: 0.1s;
 }
 
 /* ── Tablet (≤ 900px) ── */
 @media (max-width: 900px) {
   .navbar-logo-image {
-    width: clamp(130px, 18vw, 178px);
+    width: clamp(130px, 18vw, 175px);
     max-height: 32px;
   }
 }
@@ -1792,24 +1802,18 @@ footer h5 {
 /* ── Mobile (≤ 600px) ── */
 @media (max-width: 600px) {
   .navbar-logo-image {
-    width: clamp(120px, 36vw, 150px);
+    width: clamp(120px, 36vw, 148px);
     max-height: 28px;
   }
-
-  /* Ensure hamburger button never overlaps logo */
-  .nav-wrap {
-    gap: 8px;
-  }
+  .nav-wrap { gap: 8px; }
 }
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   .navbar-logo-image {
     transition: none !important;
-    filter: none !important;
   }
   .navbar-logo:hover .navbar-logo-image {
     transform: none !important;
-    filter: drop-shadow(0 0 4px rgba(0, 220, 255, 0.14)) !important;
   }
 }
